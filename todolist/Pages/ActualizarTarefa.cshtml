@@ -1,0 +1,47 @@
+﻿@page
+@model todolist.Pages.ActualizarTarefaModel
+@{
+}
+
+@{
+
+    if (ViewData["message"] == null)
+    {
+
+    }
+    else if (ViewData["message"].Equals("Actualização efectuada com sucesso"))
+    {
+    <div class="alert alert-success" role="alert">
+        @ViewData["message"]
+    </div>
+    }
+    else
+    {
+<div class="alert alert-danger" role="alert">
+    @ViewData["message"]
+</div>
+        }
+    }
+<table>
+
+    <tr>
+        <th>Descrição da tarefa</th>
+        <th>Data de inicio</th>
+        <th>Data de fim</th>
+    </tr>
+
+    @foreach (var task in Model.tarefas)
+    {
+        <tr>
+            <form method="POST">
+                 <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => task.Id)" />
+            <td> <input type="text" name="descricao" value="@Html.DisplayFor(modelItem => task.Descricao)" /> </td>
+            <td> <input type="datetime" name="dataInicio" value="@Html.DisplayFor(modelItem => task.DataInicio)" /></td>
+            <td> <input type="datetime" name="dataFim" value="@Html.DisplayFor(modelItem => task.DataFim)" /></td>
+            <td> <input type="submit" value="Guardar" onclick="return confirm('Quer mesmo efectuar a alteração?')"/></td>
+
+            </form>
+        </tr>
+    }
+
+</table>

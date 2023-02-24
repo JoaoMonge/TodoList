@@ -1,0 +1,26 @@
+﻿@page
+@model todolist.Pages.ConsultarTarefasModel
+@{
+}
+
+
+
+<table>
+
+    <tr>
+        <th>Descrição da tarefa</th>
+        <th>Data de inicio</th>
+        <th>Data de fim</th>
+    </tr>
+
+    @foreach (var task in Model.tarefas)
+{
+            <tr>
+                <td>@Html.DisplayFor(modelItem => task.Descricao)</td>
+                <td>@Html.DisplayFor(modelItem => task.DataInicio)</td>
+                <td>@Html.DisplayFor(modelItem => task.DataFim)</td>
+
+            </tr>
+}
+
+</table>

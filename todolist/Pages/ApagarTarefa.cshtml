@@ -1,0 +1,33 @@
+﻿@page
+@model todolist.Pages.ApagarTarefaModel
+@{
+}
+
+<table>
+
+    <tr>
+        <th>Descrição da tarefa</th>
+        <th>Data de inicio</th>
+        <th>Data de fim</th>
+    </tr>
+
+    @foreach (var task in Model.tarefas)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => task.Descricao)</td>
+            <td>@Html.DisplayFor(modelItem => task.DataInicio)</td>
+            <td>@Html.DisplayFor(modelItem => task.DataFim)</td>
+            <!-- Coluna extra em relação à página de consulta. Contêm um botão que permite apagar o -->
+            <td>
+                <form method="POST">
+
+                    <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => task.Id)"/>
+                    <input type="submit" value="Apagar" onclick="return confirm('Têm mesmo a certeza que quer apagar?');"/>
+
+                </form>
+            </td>
+
+        </tr>
+    }
+
+</table>
